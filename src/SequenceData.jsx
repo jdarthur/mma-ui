@@ -12,6 +12,8 @@ class SequenceData extends Component {
 
             <div>
                 <br/>
+                   { this.props.description ? "//" + this.props.description : null}
+                   { this.props.description ? <br/> : null }
                 {this.props.repeat ? <div> Repeat </div> : null}
                 {notes}
                 {this.props.repeat ? <div> RepeatEnd </div> : null}

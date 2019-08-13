@@ -554,11 +554,12 @@ a.full-button {
   padding: .75rem;
   outline: none;
   background: transparent;
-  margin-bottom: .5rem;
+  /*margin-bottom: .5rem;*/
   font-size: 1rem;
   width: 100%;
   max-width: 100%;
-  line-height: 1; }
+  line-height: 1;
+  align-self: center;}
 
 [type=color]:hover, [type=date]:hover, [type=datetime]:hover, [type=datetime-local]:hover, [type=email]:hover, [type=month]:hover, [type=number]:hover, [type=password]:hover, [type=search]:hover, [type=tel]:hover, [type=text]:hover, [type=url]:hover, [type=week]:hover, [type=time]:hover, select:hover, textarea:hover {
   border: 1px solid #b4b4b4; }
@@ -674,9 +675,9 @@ caption {
 }
 
 .song_editor {
-  width: 300px;
+  width: 500px;
   padding: 10px;
-  flex-grow: 1;
+  /*flex-grow: 1;*/
   /*border: 1px solid black;*/
 }
 
@@ -695,7 +696,9 @@ caption {
 .flexrow {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  padding: 5px;
 }
 
 .tempo_holder {
@@ -711,18 +714,43 @@ caption {
 /*  justify-content: space-between;*/
 }
 
+.text_input {
+  align-self: center;
+}
+
 .incr_button {
   /*background: lightgrey;*/
   align-self: center;
-  border: 1px solid black;
-  padding: 10px;
+  border: 1px solid #cdcdcd;
+  color: darkgrey;
+  padding: 5px 10px 5px 10px;
+  /*padding: 10px;*/
   border-radius: 5px;
   /*background: lightgrey;*/
 }
 .incr_button:hover {
-  background: grey;
+  background: lightgrey;
 }
 
+
+.note {
+  align-self: center;
+  text-align: center;
+  /*padding-left: 10px;*/
+  /*padding-right: 10px;*/
+  min-width: 50px;
+  /*background: lightgrey;*/
+/*  justify-content: space-between;*/
+}
+
+.sequence {
+  align-self: center;
+  text-align: center;
+  border: 1px solid #cdcdcd;
+  margin-top: 5px;
+  padding: 15px;
+  border-radius: 5px;
+}
 
 
 

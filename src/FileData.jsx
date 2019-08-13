@@ -29,31 +29,30 @@ const song = {
 
 class FileData extends Component {
     state = {
-        title: this.props.title,
-        notes: this.props.notes,
         style: song.style,
-        tempo: song.tempo,
-        sequences: song.sequences
+        sequences: this.props.sequences
     }
 
 
     render() {
-        const sequences = this.state.sequences.map((sequence, index) => (
-                <SequenceData key={index} repeat={sequence.repeat} notes={sequence.notes}/>
+        const sequences = this.props.sequences.map((sequence, index) => (
+                <SequenceData key={index} repeat={sequence.repeat}
+                              notes={sequence.notes} description={sequence.description}/>
             ))
 
         return (
             <div>
                 {this.props.title.replace(" ", "_")}.mma:
                 <div className="file_data">
-                &#x2F;&#x2F; {this.props.notes}
-                <br/>
-                <br/>
-                Tempo {this.props.tempo}
-                <br/>
-                {this.state.style}
-                <br/>
-                {sequences}
+                   { this.props.description ? "//" + this.props.description : null}
+                   { this.props.description ? <br/> : null }
+                   Tempo {this.props.tempo}
+                   <br/>
+
+                   {this.state.style}
+                   <br/>
+
+                   {sequences}
                 </div>
             </div>
         )

@@ -31,7 +31,7 @@ class Tempo extends Component {
                 &lt;
               </div>
               <div className="tempo">
-                {this.state.tempo}
+                {this.state.tempo} bpm
               </div>
               <div className="incr_button"
                    onClick={this.increment_tempo}>
