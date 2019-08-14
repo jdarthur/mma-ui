@@ -4,9 +4,13 @@ import NoteData from "./NoteData.jsx"
 class SequenceData extends Component {
 
     render() {
-        const notes = this.props.notes.map((note, index) => (
+        let notes = null
+        if (this.props.notes) {
+             notes = this.props.notes.map((note, index) => (
                 <NoteData key={index} note={note}/>
             ))
+        }
+
         return (
 
 

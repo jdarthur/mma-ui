@@ -752,5 +752,10 @@ caption {
   border-radius: 5px;
 }
 
+.add_sequence {
+  align-self: center;
+  padding: 5px;
+}
+
 
 

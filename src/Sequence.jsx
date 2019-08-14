@@ -1,33 +1,28 @@
 import React, { Component } from 'react'
 import Note from "./Note.jsx"
-// import pseudo_uuid from "./common.js"
-
-const notes = ["C", "G", "E", "C"]
 
 class Sequence extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        repeat: false,
-        description: "",
-        notes: notes
+        repeat: this.props.repeat,
+        description: this.props.description,
+        notes: this.props.notes
       }
-
-      this.props.set_function(0, this.state)
     }
 
 
     set_description = (event) => {
         const value = event.target.value
         this.setState({"description" : value}, () => {
-            this.props.set_function(0, this.state)
+            this.props.set_function(this.props.index, this.state)
         })
     }
 
     set_repeat = (event) => {
         console.log("set repeat " + event.target.checked)
         this.setState({"repeat": event.target.checked}, () => {
-            this.props.set_function(0, this.state)
+            this.props.set_function(this.props.index, this.state)
         })
     }
 
@@ -35,7 +30,7 @@ class Sequence extends Component {
         const notes = this.state.notes
         notes[index] = note
         this.setState({"notes" : notes}, () => {
-            this.props.set_function(0, this.state)
+            this.props.set_function(this.props.index, this.state)
         })
     }
 
