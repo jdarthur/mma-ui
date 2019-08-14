@@ -43,7 +43,6 @@ class Sequence extends Component {
             <Note key={index} note={note}
                   index={index} set_function={this.set_note}/>
           ))
-
         return (
             <div className="sequence">
                 <div className="flexrow">

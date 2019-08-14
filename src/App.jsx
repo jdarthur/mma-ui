@@ -5,6 +5,7 @@ import FileComment from "./FileComment.jsx"
 import Tempo from "./Tempo.jsx"
 import NewSequence from "./NewSequence.jsx"
 import Sequence from "./Sequence.jsx"
+import pseudo_uuid from "./common.js"
 
 const START_TEMPO = 120
 // const BASE_SEQUENCE = {
@@ -17,7 +18,8 @@ function base_sequence() {
     return {
         description: "",
         repeat: false,
-        notes: ["C", "G", "E", "C"]
+        notes: ["C", "G", "E", "C"],
+        uuid: pseudo_uuid()
     }
 }
 
@@ -45,7 +47,7 @@ class App extends Component {
 
     set_sequence = (index, sequence) => {
         const sequences = this.state.sequences
-        sequences[index] = sequence
+        Object.assign(sequences[index], sequence)
 
         this.setState({"sequences" : sequences})
     }
@@ -69,10 +71,11 @@ class App extends Component {
 
     render() {
         const sequences = this.state.sequences.map((sequence, index) => (
-            <Sequence key={index} index={index} set_function={this.set_sequence}
+            <Sequence key={sequence.uuid} index={index} set_function={this.set_sequence}
                       repeat={sequence.repeat}  description={sequence.description}
                       notes={sequence.notes}    delete_function={this.delete_sequence} />
           ))
+        console.log("re-render app")
 
         return (
             <div className="page">
