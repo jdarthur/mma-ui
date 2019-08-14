@@ -9,7 +9,7 @@ class NewSequence extends Component {
     render() {
         return (
             <div className="add_sequence">
-                <button type="checkbox" onClick={this.add_sequence} > Add sequence </button>
+                <button onClick={this.add_sequence} > Add sequence </button>
             </div>
         )
     }

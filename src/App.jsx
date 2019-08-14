@@ -7,10 +7,18 @@ import NewSequence from "./NewSequence.jsx"
 import Sequence from "./Sequence.jsx"
 
 const START_TEMPO = 120
-const BASE_SEQUENCE = {
-    description: "",
-    repeat: false,
-    notes: ["C", "G", "E", "C"]
+// const BASE_SEQUENCE = {
+//     description: "",
+//     repeat: false,
+//     notes: ["C", "G", "E", "C"]
+// }
+
+function base_sequence() {
+    return {
+        description: "",
+        repeat: false,
+        notes: ["C", "G", "E", "C"]
+    }
 }
 
 class App extends Component {
@@ -19,7 +27,7 @@ class App extends Component {
         title: "",
         description: "",
         tempo: START_TEMPO,
-        sequences: [BASE_SEQUENCE]
+        sequences: [base_sequence()]
 
     }
 
@@ -45,24 +53,25 @@ class App extends Component {
     add_sequence = () => {
         const sequences = this.state.sequences
 
-        const seq_copy = {
-           description: BASE_SEQUENCE.description,
-           repeat: BASE_SEQUENCE.repeat,
-           notes: []
-        }
-        for (let i = 0; i < BASE_SEQUENCE.notes.length; i++) {
-            seq_copy.notes.push(BASE_SEQUENCE.notes[i])
-        }
-
+        const seq_copy = base_sequence()
         sequences.push(seq_copy)
         this.setState({"sequences" : sequences})
+    }
+
+    delete_sequence = (del_index) => {
+        console.log("del " + del_index)
+        const sequences = this.state.sequences
+        sequences.splice(del_index, 1)
+        console.log(sequences)
+
+        this.setState({sequences: sequences})
     }
 
     render() {
         const sequences = this.state.sequences.map((sequence, index) => (
             <Sequence key={index} index={index} set_function={this.set_sequence}
-                      repeat={sequence.repeat} description={sequence.description}
-                      notes={sequence.notes} />
+                      repeat={sequence.repeat}  description={sequence.description}
+                      notes={sequence.notes}    delete_function={this.delete_sequence} />
           ))
 
         return (

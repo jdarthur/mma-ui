@@ -34,6 +34,10 @@ class Sequence extends Component {
         })
     }
 
+    delete_self = ()  => {
+        this.props.delete_function(this.props.index)
+    }
+
     render() {
         const notes1 = this.state.notes.map((note, index) => (
             <Note key={index} note={note}
@@ -54,6 +58,7 @@ class Sequence extends Component {
 
 
                 {notes1}
+                <button onClick={this.delete_self} > Delete sequence </button>
             </div>
         )
     }
