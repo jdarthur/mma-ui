@@ -732,15 +732,17 @@ caption {
   background: lightgrey;
 }
 
+.note_list {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #cdcdcd;
+  border-radius: 5px;
+}
 
 .note {
   align-self: center;
   text-align: center;
-  /*padding-left: 10px;*/
-  /*padding-right: 10px;*/
   min-width: 50px;
-  /*background: lightgrey;*/
-/*  justify-content: space-between;*/
 }
 
 .sequence {

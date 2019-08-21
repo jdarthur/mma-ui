@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Note from "./Note.jsx"
+import pseudo_uuid from "./common.js"
+
 
 class Sequence extends Component {
     constructor(props) {
@@ -38,6 +40,10 @@ class Sequence extends Component {
         this.props.delete_function(this.props.index)
     }
 
+    add_note = () => {
+        console.log("add_note")
+    }
+
     render() {
         const notes1 = this.state.notes.map((note, index) => (
             <Note key={index} note={note}
@@ -55,9 +61,13 @@ class Sequence extends Component {
                   </div>
                 </div>
 
-
+                <div className="note_list">
                 {notes1}
-                <button onClick={this.delete_self} > Delete sequence </button>
+                </div>
+                <div className="flexrow">
+                  <button onClick={this.add_note} > Add note </button>
+                  <button onClick={this.delete_self} > Delete sequence </button>
+                </div>
             </div>
         )
     }

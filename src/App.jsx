@@ -5,14 +5,10 @@ import FileComment from "./FileComment.jsx"
 import Tempo from "./Tempo.jsx"
 import NewSequence from "./NewSequence.jsx"
 import Sequence from "./Sequence.jsx"
+import PlayButton from "./PlayButton.jsx"
 import pseudo_uuid from "./common.js"
 
 const START_TEMPO = 120
-// const BASE_SEQUENCE = {
-//     description: "",
-//     repeat: false,
-//     notes: ["C", "G", "E", "C"]
-// }
 
 function base_sequence() {
     return {
@@ -69,13 +65,17 @@ class App extends Component {
         this.setState({sequences: sequences})
     }
 
+    create_midi = () => {
+        console.log("send data 2 srv")
+        console.log(this.state)
+    }
+
     render() {
         const sequences = this.state.sequences.map((sequence, index) => (
             <Sequence key={sequence.uuid} index={index} set_function={this.set_sequence}
                       repeat={sequence.repeat}  description={sequence.description}
                       notes={sequence.notes}    delete_function={this.delete_sequence} />
           ))
-        console.log("re-render app")
 
         return (
             <div className="page">
@@ -89,8 +89,11 @@ class App extends Component {
                 <NewSequence add_function={this.add_sequence}/>
 
               </div>
-              <FileData title={this.state.title} description={this.state.description}
+              <div>
+                <FileData title={this.state.title} description={this.state.description}
                         tempo={this.state.tempo} sequences={this.state.sequences} />
+                <PlayButton  play_function={this.create_midi}/>
+               </div>
             </div>
             )
     }

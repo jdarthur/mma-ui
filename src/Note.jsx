@@ -5,31 +5,23 @@ const NOTES = ["C", "C#", "D", "D#", "E", "E#",
 
 class Note extends Component {
 
-    increment_tempo = () => {
-        const note_index = NOTES.indexOf(this.props.note)
-        this.props.set_function(this.props.index, note_index >= NOTES.length - 1 ? NOTES[0] : NOTES[note_index + 1])
-        // this.props.set_function(this.state.tempo + 1)
-    }
-
-    decrement_tempo = () => {
-        const note_index = NOTES.indexOf(this.props.note)
-        this.props.set_function(this.props.index, note_index < 1 ? NOTES[NOTES.length - 1] : NOTES[note_index - 1])
+    set_note = (event) => {
+      const note = NOTES[event.target.value]
+      this.props.set_function(this.props.index, note)
     }
 
     render() {
         return (
-            <div className="tempo_holder">
-              <div className = "incr_button"
-                   onClick={this.decrement_tempo}>
-                &lt;
+
+            <div>
+              <div>
+                { this.props.note }
               </div>
-              <div className="note">
-                {this.props.note}
+              <div className="flexrow">
+                <input type="range" min='0' max={ NOTES.length - 1 }
+                       onChange={this.set_note} value={ NOTES.indexOf(this.props.note) }/>
               </div>
-              <div className="incr_button"
-                   onClick={this.increment_tempo}>
-                &gt;
-              </div>
+
             </div>
         )
     }
